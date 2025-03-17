@@ -1,40 +1,42 @@
-This is a simple template for research project READMEs. 
-Some basic Markdown examples are provided below. 
-You can find more information about MarkDown style in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
-
-A sample README can be found in [EXAMPLE.md](EXAMPLE.md).
-
-✨ Let's get started! ✨
-
-Use https://shields.io/ to create badges depending on the used license and other relevant links, e.g.:
-
-    [![arXiv](http://img.shields.io/badge/arXiv-2001.09136-B31B1B.svg)](https://arxiv.org/abs/2107.00606)
-    [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-
-Which will look like this:
-
 [![arXiv](http://img.shields.io/badge/arXiv-2001.09136-B31B1B.svg)](https://arxiv.org/abs/2107.00606)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 
 
-<h1 align="center">  Title Goes Here 
+<h1 align="center">  Social Navigation Metrics Matching
 </h1>
 
-[Graphical abstract goes here]
+<!-- [Graphical abstract goes here]
 <p align="center">
   <img src="https://amlbrown.com/wp-content/uploads/2015/10/11219225_10153619513398446_2657606012680909527_n.jpg" alt="Alternative text" width="450"/>
-</p>
+</p> -->
 
-[General description of the project goes here]
+## Objective of the project
 
-Add at least another figure to sum up the main result of the paper.
-Figures can be added using:
+The goal of the project is to analyze the correlation between existing social navigation metrics commonly used in robot evaluation and metrics assigned by humans through surveys. The project aims at highlighting key insights that emerge from such comparison: are current metrics exaustive to represent the navigation experiment compared to human-level opinion? What aspect is missing? 
 
-```
-<p align="center">
-  <img src="https://ars.els-cdn.com/content/image/1-s2.0-S0031320321006634-gr6_lrg.jpg" alt="Alternative Text" width="750"/>
-</p>
-```
+**Definiton**
+
+QM := Quantitative Metrics
+
+HM := Human Metrics
+
+## Roadmap
+- Goal 0 (Started): 
+  - Set up data structure to import evaluation metrics data in np arrays to be processed. 
+  - Set up basic utils for plotting data, computing mean, std dev, distribution, and cluster data.
+  - Assign Labels to the 24 experiments considered: [Good, Medium, Bad]
+
+- Goal 1 (not started): Investigate overall correlation between quantitative and qualitative metrics. 
+  - 1.1: Discretize quantitative metrics in 1-5 score range and plot the histogram for each experiment to compare with qualitative results
+  - 1.2: Cluster the experiments in the 3 expected clusters (based on assigned labels) and compare the results obtained using QM space and HM space
+
+- Goal 2 (not started): Single metrics feature matching. Which aspect of human evaluation is missing in the existing quantitative metrics? 
+  - Output: table of regression score matching
+
+- Goal 3 (not started): Which are better to classify correctly the experiment? Train a classifier to predict the goodness of the experiment based on assigned labels using both QM and HM features.
+
+## Current state of works
+- Goal 0: Setting up data structure to import evaluation metrics data in np arrays
 
 ## Installation
 [Explanation on how to install the project goes here]
