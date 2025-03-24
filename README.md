@@ -36,9 +36,10 @@ HM := Human Metrics
 - Goal 3 (not started): Which are better to classify correctly the experiment? Train a classifier to predict the goodness of the experiment based on assigned labels using both QM and HM features.
 
 ## Current state of works
-- Goal 0: Setting up data structure to import evaluation metrics data in np arrays (done)
--         Labels assigned to each experiment according to the assumptions (done)
--         Plotting utils to start showing bar plots, also with standard deviation (in progress)
+- Goal 0:
+  - Setting up data structure to import evaluation metrics data in np arrays (done)
+  - Labels assigned to each experiment according to the assumptions (done)
+  - Plotting utils to start showing bar plots, also with standard deviation (in progress)
 - 
 
 ## Installation
