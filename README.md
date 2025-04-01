@@ -22,28 +22,30 @@ HM := Human Metrics
 
 ## Roadmap
 
-- Goal 0:
+- **Goal 0**:
    - Setting up data structure to import evaluation metrics data in np arrays (done)
    - Labels assigned to each experiment according to the assumptions (done)
    - Plotting utils to start showing bar plots, also with standard deviation (in progress)
 
-- Goal 1 (not started): Investigate overall correlation between quantitative and qualitative metrics. 
+- **Goal 1** (Work in Progress): Investigate overall correlation between quantitative and qualitative metrics. 
   - 1.1: Discretize quantitative metrics in 1-5 score range and plot the histogram for each experiment to compare with qualitative results
   - 1.2: Cluster the experiments in the 3 expected clusters (based on assigned labels) and compare the results obtained using QM space and HM space
 
-- Goal 2 (not started): Single metrics feature matching. Which aspect of human evaluation is missing in the existing quantitative metrics? 
-  - Output: table of regression score matching
+- **Goal 2** (not started): Single metrics feature matching. Which aspect of human evaluation is missing in the existing quantitative metrics? 
+  - **Output**: table of regression score matching
+  - 2.1. ANOVA (variance analysis). Helps to verify whether the differences in the metric produce significant differences in the rating.
+	- 2.2. Analysis of correlation between each metric and rating (average values) (Spearman and/or Kendall).
+	- 2.3. Optionally, to model the relation between metric and rating, ordinal regression
 
-- Goal 3 (not started): Which are better to classify correctly the experiment? Train a classifier to predict the goodness of the experiment based on assigned labels using both QM and HM features.
+- **Goal 3**(not started): Which are better to classify correctly the experiment? 
+Train a classifier to predict the goodness of the experiment based on assigned labels using both QM and HM features. 
+Decision trees and many others, and applying explanability methods to know the "relevance" of each metric
 
 ## Current state of works
-- Goal 0:
-  - Setting up data structure to import evaluation metrics data in np arrays (done)
-  - Labels assigned to each experiment according to the assumptions (done)
-  - Plotting utils to start showing bar plots, also with standard deviation (in progress)
-- 
+- Goal 0 (done): Setting up data structure to import evaluation metrics data in np arrays
+- Goal 1 (quite done): Investigate overall correlation between quantitative and qualitative metrics. We set up plots for direct comparison of average results from survey and quantitative lab data. Then, we use K-means clustering to compare the category assigned to each epxeriment based on QM features os Survey HM features.
 
-## Installation
+## Installation [TODO]
 [Explanation on how to install the project goes here]
 
 Always use ```pipreqs``` to generate the requirements.txt file.
