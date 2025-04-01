@@ -1,0 +1,6 @@
+social_metrics_match:
+  data:
+    repo_dir: "/Social-Nav-Metrics-Matching"
+    lab_data_path: "/social_metrics_match/data_folder/validation_of_metrics_quantitative_and_lab_qualitative.ods"
+    survey_data_path: "/social_metrics_match/data_folder/qualitative_metrics_survey.xlsx"
+    results_path: "/social_metrics_results"
