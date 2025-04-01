@@ -21,10 +21,11 @@ QM := Quantitative Metrics
 HM := Human Metrics
 
 ## Roadmap
-- Goal 0 (Started): 
-  - Set up data structure to import evaluation metrics data in np arrays to be processed. 
-  - Set up basic utils for plotting data, computing mean, std dev, distribution, and cluster data.
-  - Assign Labels to the 24 experiments considered: [Good, Medium, Bad]
+
+- Goal 0:
+   - Setting up data structure to import evaluation metrics data in np arrays (done)
+   - Labels assigned to each experiment according to the assumptions (done)
+   - Plotting utils to start showing bar plots, also with standard deviation (in progress)
 
 - Goal 1 (not started): Investigate overall correlation between quantitative and qualitative metrics. 
   - 1.1: Discretize quantitative metrics in 1-5 score range and plot the histogram for each experiment to compare with qualitative results
