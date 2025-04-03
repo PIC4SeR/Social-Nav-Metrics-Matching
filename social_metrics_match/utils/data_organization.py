@@ -490,12 +490,12 @@ def datacube_qual_survey_data(survey_dict : dict, normalize: bool = True):
         return datacube
 
 
-def weighted_avg_survey_data(survey_dict, robotics_know, w_avg=True):
+def weighted_avg_survey_data(survey_dict, robotics_know, w_avg=True, normalize=True):
     """
     starting from the data dicitionary of survey data and column with people robotics knowledge, compute the standard average or weighted average
     Output: mean array, std array
     """
-    datacube = datacube_qual_survey_data(survey_dict)
+    datacube = datacube_qual_survey_data(survey_dict, normalize=normalize)
 
     ## Compute weights from robo_knowledge_survey_data
     if w_avg == True:
