@@ -34,17 +34,17 @@ def get_init_dict_lab_data(lab_df : pd.DataFrame):
     mapping = {
     "Unnamed: 2": "labels",
     "Unnamed: 3": "algorithms",
-    "Unnamed: 4": "social work",
-    "Unnamed: 5": "social work per second",
-    "Unnamed: 6": "time to goal",
-    "Unnamed: 7": "path length",
-    "Unnamed: 8": "average minimum distance",
-    "Unnamed: 9": "intimate space intrusion",
-    "Unnamed: 10": "personal space intrusion",
-    "Unnamed: 11": "social space intrusion",
-    "Unnamed: 12": "public space occupancy",
-    "Unnamed: 13": "cumulative heading changes",
-    "Unnamed: 14": "average robot linear speed",
+    "Unnamed: 4": "time to goal",
+    "Unnamed: 5": "path length",
+    "Unnamed: 6": "cumulative heading changes",
+    "Unnamed: 7": "average robot linear speed",
+    "Unnamed: 8": "social work",
+    "Unnamed: 9": "social work per second",
+    "Unnamed: 10": "average minimum distance",
+    "Unnamed: 11": "intimate space intrusion",
+    "Unnamed: 12": "personal space intrusion",
+    "Unnamed: 13": "social space intrusion",
+    "Unnamed: 14": "public space occupancy",
     "Unnamed: 15": "qualitative metrics",
     "Unnamed: 16": "unobtrusiveness",
     "Unnamed: 17": "friendliness",
@@ -99,10 +99,9 @@ def separate_HM_QM_dict_lab_data(data : dict):
     Adjust qualitative_keys and quantitative_keys as needed.
     """
     qualitative_keys = {"unobtrusiveness", "friendliness", "smoothness", "avoidance foresight"}
-    quantitative_keys = {"social work", "social work per second", "time to goal", "path length", "average minimum distance",
-                         #"intrusion score"
-                         "intimate space intrusion","personal space intrusion","social space intrusion","public space occupancy"
-                         "cumulative heading changes", "average robot linear speed"
+    quantitative_keys = {"time to goal", "path length", "cumulative heading changes", "average robot linear speed",
+                          "social work", "social work per second", "average minimum distance",
+                          "intimate space intrusion","personal space intrusion","social space intrusion","public space occupancy"
                          }
     new_data = {}
     for experiment, label_groups in data.items():
@@ -126,25 +125,28 @@ def rescale(arr : np.ndarray):
     """
     Rescale array linearly, such that best val --> 1
     """
-    new_array = arr.copy() # Shape: [9, 3] --> [n_metrics, n_run]
+    new_array = arr.copy() # Shape: [11, 3] --> [n_metrics, n_run]
     
     for i in range(new_array.shape[0]):
-        if i in [5,6,7,8]:
+        if i in [7, 8, 9, 10]: # proxemics need to be rescaled
             new_array[i] = 100*np.ones_like(new_array[i]) - new_array[i]
-    #first four rows are social work, social work per second, time to goal and path length
-        if i in [0, 1, 2, 3, 7, 8]:  # best value is the lowest: normalized score = (min / each value)
-            best_value = new_array[i].min()
-            if new_array[i].any() < 1e-6:
-                new_array[i] = np.ones_like(new_array[i])
-            else:
-                new_array[i] = (best_value / new_array[i])
-        # last row is average minimum distance to the closest person
-        else:  # for the last row, best value is the highest: normalized score = (each value / max)
+
+        # metrics that follow best value is the highest: normalized score = (each value / max)
+        # average minimum distance to the closest person and proxemics
+        if i in list(range(6, 9)):
             best_value = new_array[i].max()
             if best_value < 1e-6:
                 new_array[i] = np.zeros_like(new_array[i])
             else:
                 new_array[i] = new_array[i] / best_value
+        
+        else: # metrics that follow best value is the lowest: normalized score = (min / each value)
+            best_value = new_array[i].min()
+            if new_array[i].any() < 1e-6:
+                new_array[i] = np.ones_like(new_array[i])
+            else:
+                new_array[i] = (best_value / new_array[i])
+        
 
     return new_array
 
@@ -152,24 +154,26 @@ def min_max_normalize(arr: np.ndarray):
     """
     Normalize array with min-max strategy
     """
-    new_array = arr.copy() # Shape: [9, 3] --> [n_metrics, n_run]
+    new_array = arr.copy() # Shape: [11, 3] --> [n_metrics, n_run]
     
     for i in range(new_array.shape[0]):
         if np.abs(np.max(arr[i]) - np.min(arr[i])) < 1e-6:
             new_array[i] = np.ones_like(new_array[i])
             continue
+
         norm_arr = (arr[i] - np.min(arr[i])) / (np.max(arr[i]) - np.min(arr[i]))
-        if i in [0, 1, 2, 3, 5, 6]:  # metrics that follow: best value is the lowest
-            new_array[i] = np.ones_like(norm_arr) - norm_arr
-        else: # metrics that follow: best value is the highest
+        if i in list(range(6, 9)): # metrics that follow: best value is the highest
             new_array[i] = norm_arr
+        else:  # metrics that follow: best value is the lowest
+            new_array[i] = np.ones_like(norm_arr) - norm_arr
+        
     return new_array
 
 def normalize_quant_data(quant_metrics_arr : np.ndarray, normalization : str ="rescale"):
     """ 
     Normalize the quantitative metrics with linear rescale in [1, min] or min-max normalization in [0,1]
     """
-    # Shape: [9, 3] --> [n_metrics, n_run]
+    # Shape: [11, 3] --> [n_metrics, n_run]
     # print("Normalizing QM data with normalization: ", normalization)
     if normalization != "rescale" and normalization != "min-max":
         raise Exception("normalization should be rescale or min-max")
@@ -262,7 +266,7 @@ def np_extract_exp_lab(lab_dict : dict, experiment : str, order : bool = False, 
 
     return quant_arr, qual_arr
 
-def get_all_lab_data_arr(complete_lab_dict : dict, normalize : bool = True, normalization : str ="rescale"):
+def get_all_lab_data_arr(complete_lab_dict : dict, order : bool = True, normalize : bool = True, normalization : str ="rescale"):
     """ 
     Normalize the quantitative metrics with linear rescale in [1, min] or min-max normalization in [0,1]
     """
