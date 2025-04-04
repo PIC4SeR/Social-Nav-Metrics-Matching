@@ -71,3 +71,35 @@ def run_PCA(arr: np.array, n_components: int = 2):
     pca = PCA(n_components= n_components, random_state=42)
     pca_results = pca.fit_transform(arr)
     return pca_results
+
+def get_combination_for_best_matching(array_of_samples : np.array, labels_to_match, K=3):
+    """
+    Given an array of samples, computes the best combination of features that matches the labels_to_match
+    using the adjusted rand index (ARI) as a metric.
+    The function iterates through all combinations of features and computes the ARI for each combination.
+    It returns the combinations sorted by ARI in descending order.
+    Input:
+      - array_of_samples: array of samples to be considered
+      - labels_to_match: the labels to match against
+      - K: number of clusters to use for clustering
+    Output: sorted list of combinations with their ARI scores
+    """
+    results = []
+    n_features = array_of_samples.shape[1]  # total number of quantitative metrics
+
+    for r in range(1, n_features + 1):
+        for cols in combinations(range(n_features), r):
+            subset = array_of_samples[:, list(cols)]
+            labels_combination = cluster_K_means(subset, K=K)
+            labels_array = []
+            for i in range(K):
+                labels_subset = np.where(labels_combination == i)[0]
+                labels_array.append(labels_subset)
+            ari = adjusted_rand_score(labels_to_match, labels_combination)
+            results.append({'metrics': cols, 'ARI': ari, 'labels':labels_array})
+
+    results = sorted(results, key=lambda item: item['ARI'], reverse=True)
+    # Print sorted results by ARI in descending order
+    for res in results:
+        print("QM metrics columns:", res['metrics'], "ARI:", res['ARI'])
+    return results
