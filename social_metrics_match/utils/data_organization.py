@@ -24,7 +24,7 @@ def extract_data_to_df(file_path):
 ###### Lab Data Methods ########
 ################################
 
-def get_init_dict_lab_data(lab_df):
+def get_init_dict_lab_data(lab_df : pd.DataFrame):
     """
     Handle the dataframe to have a dictionary with the data organized by the experiment name
     Input : pd.dataframe
@@ -73,7 +73,7 @@ def get_init_dict_lab_data(lab_df):
     return df_dict_lab_data
 
 
-def separate_by_label_lab_data(initial_dict):
+def separate_by_label_lab_data(initial_dict : dict):
     """
     This separates the data by the label ["Good", "Mid", "Bad"] creating another nested dictionary
     """
@@ -92,7 +92,7 @@ def separate_by_label_lab_data(initial_dict):
     return result
 
 
-def separate_HM_QM_dict_lab_data(data):
+def separate_HM_QM_dict_lab_data(data : dict):
     """
     This function separates the data into quantitative and qualitative data, ending up with a dictionary for quantitative and qualitative data
     Every entry is its own dict
@@ -125,7 +125,7 @@ def separate_HM_QM_dict_lab_data(data):
             new_data[experiment][label] = split_record
     return new_data
 
-def rescale(arr : np.array):
+def rescale(arr : np.ndarray):
     """
     Rescale array linearly, such that best val --> 1
     """
@@ -168,7 +168,7 @@ def min_max_normalize(arr: np.ndarray):
             new_array[i] = norm_arr
     return new_array
 
-def normalize_quant_data(quant_metrics_arr : np.array, normalization="rescale"):
+def normalize_quant_data(quant_metrics_arr : np.ndarray, normalization : str ="rescale"):
     """ 
     Normalize the quantitative metrics with linear rescale in [1, min] or min-max normalization in [0,1]
     """
@@ -195,7 +195,7 @@ def organize_dict_lab_data(data):
     organized_data = separate_HM_QM_dict_lab_data(separated_data)
     return organized_data
 
-def np_single_lab_run(lab_dict, experiment, label):
+def np_single_lab_run(lab_dict : dict, experiment : str, label: str):
     """
     Extract np arrays of a single lab experiment from the overall organized dictionary
     """
@@ -215,7 +215,7 @@ def np_single_lab_run(lab_dict, experiment, label):
 
     return quantitative_data, qualitative_data
 
-def np_extract_exp_lab(lab_dict, experiment, order=False, normalize=True, normalization="rescale"):
+def np_extract_exp_lab(lab_dict : dict, experiment : str, order : bool = False, normalize : bool = True, normalization : str = "rescale"):
     """
     this function will return the data as two numpy arrays:
     one for quantitative data and the other for qualitative data, the order is given the order the quantitative and qualitative keys above are defined
@@ -265,7 +265,7 @@ def np_extract_exp_lab(lab_dict, experiment, order=False, normalize=True, normal
 
     return quant_arr, qual_arr
 
-def get_all_lab_data_arr(complete_lab_dict, normalize=True, normalization="rescale"):
+def get_all_lab_data_arr(complete_lab_dict : dict, normalize : bool = True, normalization : str ="rescale"):
     """ 
     Normalize the quantitative metrics with linear rescale in [1, min] or min-max normalization in [0,1]
     """
@@ -345,7 +345,7 @@ def get_initial_survey_dict(survey_df : pd.DataFrame):
     
     return dfs_dict_survey_data
 
-def split_survey_data_by_case(dfs):
+def split_survey_data_by_case(dfs : pd.DataFrame):
     """
     For each experiment in the survey data dictionary, split its dataframe by remapping columns whose names start
     with "First", "Second" or "Third" (followed by "case").
@@ -366,7 +366,7 @@ def split_survey_data_by_case(dfs):
         split_data[exp] = sub_dict
     return split_data
 
-def np_single_survey_run(survey_dict, experiment, label):
+def np_single_survey_run(survey_dict : dict, experiment : str, label : str):
     """Extract the data for the specified experiment and label"""
     #the survey data are not technically labeled, in the first passage the labels to be used are "First","Second","Third"
     experiment_data = survey_dict[experiment]
@@ -382,7 +382,7 @@ def np_single_survey_run(survey_dict, experiment, label):
 
     return qualitative_data
 
-def np_extract_exp_survey(survey_dict, experiment, order=True):
+def np_extract_exp_survey(survey_dict : dict, experiment : str, order : bool =True):
     """
     Extract np arrays for a specific scenario, getting all the three runs.
     """
@@ -413,7 +413,7 @@ def np_extract_exp_survey(survey_dict, experiment, order=True):
         dim = 4
         
     for label in labels:
-        qual_arr_single = np_single_survey_run(survey_dict,experiment,label)
+        qual_arr_single = np_single_survey_run(survey_dict, experiment, label)
         if qual_arr.size == 0:
             qual_arr = qual_arr_single.reshape(-1, dim)
         else:
@@ -421,7 +421,7 @@ def np_extract_exp_survey(survey_dict, experiment, order=True):
     return qual_arr
 
 
-def overall_array_survey_data_all_agents(survey_dict, order=True):
+def overall_array_survey_data_all_agents(survey_dict : dict, order=True):
     overall_qual_arr = np.array([])
     for key in survey_dict:
         qual_arr = np_extract_exp_survey(survey_dict,key,order=order)
@@ -490,7 +490,7 @@ def datacube_qual_survey_data(survey_dict : dict, normalize: bool = True):
         return datacube
 
 
-def weighted_avg_survey_data(survey_dict, robotics_know, w_avg=True, normalize=True):
+def weighted_avg_survey_data(survey_dict : dict, robotics_know : np.ndarray, w_avg : bool =True, normalize : bool =True):
     """
     starting from the data dicitionary of survey data and column with people robotics knowledge, compute the standard average or weighted average
     Output: mean array, std array

@@ -8,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import DBSCAN
 from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
 from sklearn.metrics import silhouette_score, adjusted_rand_score, confusion_matrix
+from itertools import combinations
 
 def cluster_comparison_using_ARI(labels_to_analyze : np.array, name='array'):
     """
