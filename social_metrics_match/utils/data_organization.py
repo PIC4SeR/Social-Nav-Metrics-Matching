@@ -39,21 +39,17 @@ def get_init_dict_lab_data(lab_df : pd.DataFrame):
     "Unnamed: 6": "time to goal",
     "Unnamed: 7": "path length",
     "Unnamed: 8": "average minimum distance",
-    ## i tried replacing all the proxemics metrics with a single intrusion score (100% - intimate space occupancy - personal space occupancy)
-    #"Unnamed: 9": "intrusion score",
-    #"Unnamed: 10": "unobtrusiveness",
-    #"Unnamed: 11": "friendliness",
-    #"Unnamed: 12": "smoothness",
-    #"Unnamed: 13": "avoidance foresight"
     "Unnamed: 9": "intimate space intrusion",
     "Unnamed: 10": "personal space intrusion",
     "Unnamed: 11": "social space intrusion",
     "Unnamed: 12": "public space occupancy",
-    "Unnamed: 13": "qualitative metrics",
-    "Unnamed: 14": "unobtrusiveness",
-    "Unnamed: 15": "friendliness",
-    "Unnamed: 16": "smoothness",
-    "Unnamed: 17": "avoidance foresight"
+    "Unnamed: 13": "cumulative heading changes",
+    "Unnamed: 14": "average robot linear speed",
+    "Unnamed: 15": "qualitative metrics",
+    "Unnamed: 16": "unobtrusiveness",
+    "Unnamed: 17": "friendliness",
+    "Unnamed: 18": "smoothness",
+    "Unnamed: 19": "avoidance foresight"
     }
 
     groups = {}
@@ -106,6 +102,7 @@ def separate_HM_QM_dict_lab_data(data : dict):
     quantitative_keys = {"social work", "social work per second", "time to goal", "path length", "average minimum distance",
                          #"intrusion score"
                          "intimate space intrusion","personal space intrusion","social space intrusion","public space occupancy"
+                         "cumulative heading changes", "average robot linear speed"
                          }
     new_data = {}
     for experiment, label_groups in data.items():
