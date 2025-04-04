@@ -10,6 +10,9 @@ from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
 from sklearn.metrics import silhouette_score, adjusted_rand_score, confusion_matrix
 from itertools import combinations
 
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
 def cluster_comparison_using_ARI(labels_to_analyze : np.array, name='array'):
     """
     Given the labels fed as input, computes the adjusted rand score
@@ -103,4 +106,82 @@ def get_combination_for_best_matching(array_of_samples : np.array, labels_to_mat
     # Print sorted results by ARI in descending order
     for res in results:
         print("QM metrics columns:", res['metrics'], "ARI:", res['ARI'])
+    return results
+
+def get_combination_QM_clf(X : np.array, y : np.array):
+    """
+    Given an array of samples, computes the best combination of features that matches the labels_to_match
+    using the adjusted rand index (ARI) as a metric.
+    The function iterates through all combinations of features and computes the ARI for each combination.
+    It returns the combinations sorted by ARI in descending order.
+    Input:
+      - array_of_samples: array of samples to be considered
+      - labels_to_match: the labels to match against
+    Output: sorted list of combinations with their ARI scores
+    """
+    results = []
+    n_features = X.shape[1]  # total number of quantitative metrics
+
+    for r in range(1, n_features + 1):
+        for cols in combinations(range(n_features), r):
+            subset = X[:, list(cols)]
+            X_train = np.vstack([subset[:15, :], subset[-3:, :]])
+            y_train = np.vstack([y[:15, None], y[-3:, None]])
+
+            X_test = subset[15:21, :]
+            y_test = y[15:21]
+
+            rf_clf = RandomForestClassifier(max_depth=2, n_estimators = 10, criterion = 'entropy', random_state = 42)
+            rf_clf.fit(X_train, y_train)
+            
+            y_pred = rf_clf.predict(X_test)
+
+            acc = accuracy_score(y_test, y_pred)
+            results.append({'metrics': cols, 'ACC': acc, 'labels': y_pred})
+
+    results = sorted(results, key=lambda item: item['ACC'], reverse=True)
+    # Print sorted results by ARI in descending order
+    for res in results:
+        print("QM metrics columns:", res['metrics'], "ACC:", res['ACC'])
+    return results
+
+def get_combination_QM_multiout_clf(X : np.array, y : np.array):
+    """
+    Given an array of samples, computes the best combination of features that matches the labels_to_match
+    using the adjusted rand index (ARI) as a metric.
+    The function iterates through all combinations of features and computes the ARI for each combination.
+    It returns the combinations sorted by ARI in descending order.
+    Input:
+      - array_of_samples: array of samples to be considered
+      - labels_to_match: the labels to match against
+    Output: sorted list of combinations with their ARI scores
+    """
+    results = []
+    n_features = X.shape[1]  # total number of quantitative metrics
+
+    for r in range(1, n_features + 1):
+        for cols in combinations(range(n_features), r):
+            subset = X[:, list(cols)]
+            X_train = np.vstack([subset[:15, :], subset[-3:, :]])
+            y_train = np.vstack([y[:15, :], y[-3:, :]])
+
+            X_test = subset[15:21, :]
+            y_test = y[15:21]
+
+            rf_clf = RandomForestClassifier(max_depth=2, n_estimators = 25, criterion = 'entropy', random_state = 42)
+            rf_clf.fit(X_train, y_train)
+            
+            y_pred = rf_clf.predict(X_test)
+            acc = []
+
+            for i in range(y_test.shape[1]):
+                acc_i = accuracy_score(y_test[:, i], y_pred[:, i])
+                acc.append(acc_i)
+            mean_acc = np.mean(np.array(acc))
+            results.append({'metrics': cols, 'mean_acc': mean_acc, 'ACC': acc, 'pred_labels': y_pred, 'true_labels': y_test})
+
+    results = sorted(results, key=lambda item: item['mean_acc'], reverse=True)
+    # Print sorted results by ARI in descending order
+    for res in results:
+        print("QM metrics columns:", res['metrics'], "mean_acc:", res["mean_acc"], "ACC:", res['ACC'])
     return results
