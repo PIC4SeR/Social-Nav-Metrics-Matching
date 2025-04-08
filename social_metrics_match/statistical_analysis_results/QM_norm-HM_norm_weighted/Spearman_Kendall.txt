@@ -1,0 +1,49 @@
+📊 Métricas candidatas según Spearman:
+✅ Time_to_Goal - smoothness: rho = 0.532, p = 0.008
+✅ Time_to_Goal - avoidance foresight: rho = 0.504, p = 0.012
+✅ Avg_robot_linear_speed - avoidance foresight: rho = -0.467, p = 0.021
+✅ Avg_min_distance_to_closest_person - unobtrusiveness: rho = 0.478, p = 0.018
+✅ Avg_min_distance_to_closest_person - friendliness: rho = 0.659, p = 0.000
+✅ Avg_min_distance_to_closest_person - smoothness: rho = 0.455, p = 0.025
+✅ Avg_min_distance_to_closest_person - avoidance foresight: rho = 0.650, p = 0.001
+✅ Proxemics_intimate_space_occupancy - unobtrusiveness: rho = 0.513, p = 0.010
+✅ Proxemics_intimate_space_occupancy - friendliness: rho = 0.650, p = 0.001
+✅ Proxemics_intimate_space_occupancy - smoothness: rho = 0.434, p = 0.034
+✅ Proxemics_intimate_space_occupancy - avoidance foresight: rho = 0.594, p = 0.002
+✅ Proxemics_social_space_occupancy - unobtrusiveness: rho = 0.444, p = 0.030
+✅ Proxemics_social_space_occupancy - friendliness: rho = 0.512, p = 0.011
+✅ Proxemics_social_space_occupancy - avoidance foresight: rho = 0.530, p = 0.008
+
+📊 Métricas candidatas según Kendall:
+✅ Time_to_Goal - smoothness: tau = 0.359, p = 0.017
+✅ Time_to_Goal - avoidance foresight: tau = 0.344, p = 0.023
+✅ Avg_robot_linear_speed - avoidance foresight: tau = -0.329, p = 0.029
+✅ Avg_min_distance_to_closest_person - unobtrusiveness: tau = 0.311, p = 0.040
+✅ Avg_min_distance_to_closest_person - friendliness: tau = 0.436, p = 0.004
+✅ Avg_min_distance_to_closest_person - smoothness: tau = 0.313, p = 0.038
+✅ Avg_min_distance_to_closest_person - avoidance foresight: tau = 0.443, p = 0.003
+✅ Proxemics_intimate_space_occupancy - unobtrusiveness: tau = 0.387, p = 0.011
+✅ Proxemics_intimate_space_occupancy - friendliness: tau = 0.521, p = 0.001
+✅ Proxemics_intimate_space_occupancy - smoothness: tau = 0.303, p = 0.046
+✅ Proxemics_intimate_space_occupancy - avoidance foresight: tau = 0.451, p = 0.003
+✅ Proxemics_social_space_occupancy - unobtrusiveness: tau = 0.342, p = 0.024
+✅ Proxemics_social_space_occupancy - friendliness: tau = 0.398, p = 0.008
+✅ Proxemics_social_space_occupancy - smoothness: tau = 0.306, p = 0.043
+✅ Proxemics_social_space_occupancy - avoidance foresight: tau = 0.413, p = 0.006
+
+
+🔁 Coincidencias entre Spearman y Kendall:
+✅ Time_to_Goal - smoothness: rho = 0.532, tau = 0.359
+✅ Time_to_Goal - avoidance foresight: rho = 0.504, tau = 0.344
+✅ Avg_robot_linear_speed - avoidance foresight: rho = -0.467, tau = -0.329
+✅ Avg_min_distance_to_closest_person - unobtrusiveness: rho = 0.478, tau = 0.311
+✅ Avg_min_distance_to_closest_person - friendliness: rho = 0.659, tau = 0.436
+✅ Avg_min_distance_to_closest_person - smoothness: rho = 0.455, tau = 0.313
+✅ Avg_min_distance_to_closest_person - avoidance foresight: rho = 0.650, tau = 0.443
+✅ Proxemics_intimate_space_occupancy - unobtrusiveness: rho = 0.513, tau = 0.387
+✅ Proxemics_intimate_space_occupancy - friendliness: rho = 0.650, tau = 0.521
+✅ Proxemics_intimate_space_occupancy - smoothness: rho = 0.434, tau = 0.303
+✅ Proxemics_intimate_space_occupancy - avoidance foresight: rho = 0.594, tau = 0.451
+✅ Proxemics_social_space_occupancy - unobtrusiveness: rho = 0.444, tau = 0.342
+✅ Proxemics_social_space_occupancy - friendliness: rho = 0.512, tau = 0.398
+✅ Proxemics_social_space_occupancy - avoidance foresight: rho = 0.530, tau = 0.413

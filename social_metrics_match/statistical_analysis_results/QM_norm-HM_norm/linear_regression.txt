@@ -1,0 +1,147 @@
+📊 Regresión lineal para criterio: unobtrusiveness
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.657
+Model:                            OLS   Adj. R-squared:                  0.342
+Method:                 Least Squares   F-statistic:                     2.087
+Date:                Tue, 08 Apr 2025   Prob (F-statistic):              0.111
+Time:                        15:17:50   Log-Likelihood:                 11.462
+No. Observations:                  24   AIC:                             1.077
+Df Residuals:                      12   BIC:                             15.21
+Df Model:                          11                                         
+Covariance Type:            nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+const                                 -1.7276      2.882     -0.600      0.560      -8.006       4.551
+Time_to_Goal                           0.3247      0.578      0.561      0.585      -0.936       1.585
+Path_length                            0.8772      0.397      2.208      0.047       0.012       1.743
+Cumulative_heading_changes             0.2436      0.208      1.172      0.264      -0.209       0.696
+Avg_robot_linear_speed                -0.4308      0.281     -1.535      0.151      -1.042       0.181
+Social_Work                           -0.6605      0.585     -1.129      0.281      -1.935       0.614
+Social_Work_per_second                 0.4873      0.547      0.891      0.391      -0.705       1.679
+Avg_min_distance_to_closest_person    -0.8302      0.816     -1.017      0.329      -2.609       0.948
+Proxemics_intimate_space_occupancy     1.4226      1.016      1.400      0.187      -0.791       3.637
+Proxemics_personal_space_occupancy     0.2467      0.422      0.584      0.570      -0.674       1.167
+Proxemics_social_space_occupancy       0.2896      0.531      0.545      0.596      -0.868       1.447
+Proxemics_public_space_occupancy       0.5252      2.360      0.223      0.828      -4.617       5.667
+==============================================================================
+Omnibus:                        4.412   Durbin-Watson:                   1.932
+Prob(Omnibus):                  0.110   Jarque-Bera (JB):                3.536
+Skew:                          -0.937   Prob(JB):                        0.171
+Kurtosis:                       2.844   Cond. No.                         254.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+📊 Regresión lineal para criterio: friendliness
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.657
+Model:                            OLS   Adj. R-squared:                  0.343
+Method:                 Least Squares   F-statistic:                     2.093
+Date:                Tue, 08 Apr 2025   Prob (F-statistic):              0.110
+Time:                        15:17:50   Log-Likelihood:                 30.689
+No. Observations:                  24   AIC:                            -37.38
+Df Residuals:                      12   BIC:                            -23.24
+Df Model:                          11                                         
+Covariance Type:            nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+const                                 -0.7512      1.293     -0.581      0.572      -3.569       2.067
+Time_to_Goal                           0.2896      0.260      1.116      0.286      -0.276       0.855
+Path_length                            0.0498      0.178      0.279      0.785      -0.339       0.438
+Cumulative_heading_changes             0.0701      0.093      0.752      0.467      -0.133       0.273
+Avg_robot_linear_speed                -0.0082      0.126     -0.065      0.949      -0.283       0.266
+Social_Work                           -0.2108      0.262     -0.803      0.437      -0.783       0.361
+Social_Work_per_second                 0.3594      0.246      1.464      0.169      -0.176       0.894
+Avg_min_distance_to_closest_person     0.1659      0.366      0.453      0.659      -0.632       0.964
+Proxemics_intimate_space_occupancy     0.3355      0.456      0.736      0.476      -0.658       1.329
+Proxemics_personal_space_occupancy     0.0740      0.190      0.390      0.703      -0.339       0.487
+Proxemics_social_space_occupancy       0.1242      0.238      0.521      0.612      -0.395       0.644
+Proxemics_public_space_occupancy       0.3541      1.059      0.334      0.744      -1.954       2.662
+==============================================================================
+Omnibus:                        3.575   Durbin-Watson:                   2.711
+Prob(Omnibus):                  0.167   Jarque-Bera (JB):                2.227
+Skew:                          -0.733   Prob(JB):                        0.328
+Kurtosis:                       3.282   Cond. No.                         254.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+📊 Regresión lineal para criterio: smoothness
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.616
+Model:                            OLS   Adj. R-squared:                  0.264
+Method:                 Least Squares   F-statistic:                     1.751
+Date:                Tue, 08 Apr 2025   Prob (F-statistic):              0.175
+Time:                        15:17:50   Log-Likelihood:                 29.988
+No. Observations:                  24   AIC:                            -35.98
+Df Residuals:                      12   BIC:                            -21.84
+Df Model:                          11                                         
+Covariance Type:            nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+const                                 -1.3646      1.332     -1.025      0.326      -4.266       1.537
+Time_to_Goal                           0.3281      0.267      1.227      0.243      -0.254       0.911
+Path_length                            0.0946      0.184      0.515      0.616      -0.305       0.495
+Cumulative_heading_changes             0.1872      0.096      1.949      0.075      -0.022       0.396
+Avg_robot_linear_speed                 0.0571      0.130      0.440      0.667      -0.225       0.340
+Social_Work                           -0.1611      0.270     -0.596      0.562      -0.750       0.428
+Social_Work_per_second                 0.1856      0.253      0.734      0.477      -0.365       0.736
+Avg_min_distance_to_closest_person    -0.0985      0.377     -0.261      0.798      -0.920       0.723
+Proxemics_intimate_space_occupancy     0.5856      0.470      1.247      0.236      -0.438       1.609
+Proxemics_personal_space_occupancy     0.1608      0.195      0.823      0.426      -0.265       0.586
+Proxemics_social_space_occupancy      -0.0282      0.246     -0.115      0.910      -0.563       0.507
+Proxemics_public_space_occupancy       0.9061      1.091      0.831      0.422      -1.470       3.282
+==============================================================================
+Omnibus:                        2.190   Durbin-Watson:                   2.460
+Prob(Omnibus):                  0.335   Jarque-Bera (JB):                1.899
+Skew:                           0.620   Prob(JB):                        0.387
+Kurtosis:                       2.399   Cond. No.                         254.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+📊 Regresión lineal para criterio: avoidance foresight
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.764
+Model:                            OLS   Adj. R-squared:                  0.548
+Method:                 Least Squares   F-statistic:                     3.535
+Date:                Tue, 08 Apr 2025   Prob (F-statistic):             0.0199
+Time:                        15:17:50   Log-Likelihood:                 33.505
+No. Observations:                  24   AIC:                            -43.01
+Df Residuals:                      12   BIC:                            -28.87
+Df Model:                          11                                         
+Covariance Type:            nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+const                                 -1.0065      1.150     -0.875      0.399      -3.512       1.499
+Time_to_Goal                           0.3177      0.231      1.376      0.194      -0.185       0.821
+Path_length                           -0.0448      0.159     -0.283      0.782      -0.390       0.301
+Cumulative_heading_changes             0.1475      0.083      1.778      0.101      -0.033       0.328
+Avg_robot_linear_speed                 0.0063      0.112      0.056      0.956      -0.238       0.250
+Social_Work                           -0.1066      0.233     -0.457      0.656      -0.615       0.402
+Social_Work_per_second                 0.2384      0.218      1.092      0.296      -0.237       0.714
+Avg_min_distance_to_closest_person     0.1166      0.326      0.358      0.727      -0.593       0.826
+Proxemics_intimate_space_occupancy     0.4268      0.406      1.052      0.313      -0.457       1.310
+Proxemics_personal_space_occupancy     0.1380      0.169      0.819      0.429      -0.229       0.505
+Proxemics_social_space_occupancy       0.1686      0.212      0.795      0.442      -0.293       0.631
+Proxemics_public_space_occupancy       0.4845      0.942      0.514      0.616      -1.568       2.537
+==============================================================================
+Omnibus:                        6.771   Durbin-Watson:                   2.528
+Prob(Omnibus):                  0.034   Jarque-Bera (JB):                4.769
+Skew:                          -1.030   Prob(JB):                       0.0922
+Kurtosis:                       3.723   Cond. No.                         254.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
