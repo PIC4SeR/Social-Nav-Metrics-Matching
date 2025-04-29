@@ -1,0 +1,155 @@
+📊 Regresión lineal para criterio: unobtrusiveness
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.778
+Model:                            OLS   Adj. R-squared:                  0.607
+Method:                 Least Squares   F-statistic:                     4.559
+Date:                Tue, 08 Apr 2025   Prob (F-statistic):            0.00638
+Time:                        15:14:45   Log-Likelihood:                -21.928
+No. Observations:                  24   AIC:                             65.86
+Df Residuals:                      13   BIC:                             78.81
+Df Model:                          10                                         
+Covariance Type:            nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+const                                 -0.0010      0.002     -0.508      0.620      -0.005       0.003
+Time_to_Goal                           0.0230      0.029      0.793      0.442      -0.040       0.086
+Path_length                           -0.0407      0.325     -0.125      0.902      -0.742       0.660
+Cumulative_heading_changes            -0.0741      0.065     -1.135      0.277      -0.215       0.067
+Avg_robot_linear_speed                 9.4074      6.626      1.420      0.179      -4.906      23.721
+Social_Work                         9.155e-06   1.94e-05      0.472      0.645   -3.27e-05     5.1e-05
+Social_Work_per_second                 0.0001      0.001      0.256      0.802      -0.001       0.001
+Avg_min_distance_to_closest_person     0.7531      2.342      0.322      0.753      -4.307       5.813
+Proxemics_intimate_space_occupancy    -0.0045      0.016     -0.278      0.785      -0.040       0.031
+Proxemics_personal_space_occupancy     0.0252      0.020      1.263      0.229      -0.018       0.068
+Proxemics_social_space_occupancy       0.0036      0.064      0.057      0.956      -0.135       0.142
+Proxemics_public_space_occupancy      -0.1195      0.113     -1.060      0.308      -0.363       0.124
+==============================================================================
+Omnibus:                        2.908   Durbin-Watson:                   1.975
+Prob(Omnibus):                  0.234   Jarque-Bera (JB):                1.353
+Skew:                           0.414   Prob(JB):                        0.508
+Kurtosis:                       3.818   Cond. No.                     9.78e+19
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 2.28e-30. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.
+
+📊 Regresión lineal para criterio: friendliness
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.653
+Model:                            OLS   Adj. R-squared:                  0.385
+Method:                 Least Squares   F-statistic:                     2.442
+Date:                Tue, 08 Apr 2025   Prob (F-statistic):             0.0669
+Time:                        15:14:45   Log-Likelihood:                -8.1036
+No. Observations:                  24   AIC:                             38.21
+Df Residuals:                      13   BIC:                             51.17
+Df Model:                          10                                         
+Covariance Type:            nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+const                                  0.0003      0.001      0.302      0.767      -0.002       0.003
+Time_to_Goal                           0.0135      0.016      0.827      0.423      -0.022       0.049
+Path_length                            0.0220      0.182      0.121      0.906      -0.372       0.416
+Cumulative_heading_changes            -0.0340      0.037     -0.925      0.372      -0.113       0.045
+Avg_robot_linear_speed                 4.7128      3.724      1.265      0.228      -3.333      12.759
+Social_Work                         5.815e-06   1.09e-05      0.534      0.603   -1.77e-05    2.94e-05
+Social_Work_per_second              8.701e-05      0.000      0.306      0.764      -0.001       0.001
+Avg_min_distance_to_closest_person     1.8411      1.317      1.398      0.185      -1.003       4.686
+Proxemics_intimate_space_occupancy     0.0061      0.009      0.668      0.516      -0.014       0.026
+Proxemics_personal_space_occupancy     0.0219      0.011      1.950      0.073      -0.002       0.046
+Proxemics_social_space_occupancy      -0.0303      0.036     -0.839      0.417      -0.108       0.048
+Proxemics_public_space_occupancy       0.0341      0.063      0.538      0.599      -0.103       0.171
+==============================================================================
+Omnibus:                        0.084   Durbin-Watson:                   2.219
+Prob(Omnibus):                  0.959   Jarque-Bera (JB):                0.304
+Skew:                           0.048   Prob(JB):                        0.859
+Kurtosis:                       2.458   Cond. No.                     9.78e+19
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 2.28e-30. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.
+
+📊 Regresión lineal para criterio: smoothness
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.677
+Model:                            OLS   Adj. R-squared:                  0.428
+Method:                 Least Squares   F-statistic:                     2.719
+Date:                Tue, 08 Apr 2025   Prob (F-statistic):             0.0471
+Time:                        15:14:45   Log-Likelihood:                -6.5821
+No. Observations:                  24   AIC:                             35.16
+Df Residuals:                      13   BIC:                             48.12
+Df Model:                          10                                         
+Covariance Type:            nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+const                                  0.0011      0.001      1.063      0.307      -0.001       0.003
+Time_to_Goal                           0.0153      0.015      0.996      0.337      -0.018       0.048
+Path_length                           -0.0682      0.171     -0.398      0.697      -0.438       0.302
+Cumulative_heading_changes            -0.0336      0.034     -0.976      0.347      -0.108       0.041
+Avg_robot_linear_speed                 2.9786      3.496      0.852      0.410      -4.573      10.530
+Social_Work                        -1.105e-05   1.02e-05     -1.081      0.300   -3.31e-05     1.1e-05
+Social_Work_per_second                 0.0006      0.000      2.138      0.052   -6.01e-06       0.001
+Avg_min_distance_to_closest_person     0.9949      1.236      0.805      0.435      -1.675       3.665
+Proxemics_intimate_space_occupancy     0.0169      0.009      1.971      0.070      -0.002       0.035
+Proxemics_personal_space_occupancy     0.0253      0.011      2.397      0.032       0.002       0.048
+Proxemics_social_space_occupancy       0.0005      0.034      0.014      0.989      -0.073       0.074
+Proxemics_public_space_occupancy       0.0625      0.059      1.051      0.313      -0.066       0.191
+==============================================================================
+Omnibus:                        1.450   Durbin-Watson:                   2.298
+Prob(Omnibus):                  0.484   Jarque-Bera (JB):                1.312
+Skew:                           0.494   Prob(JB):                        0.519
+Kurtosis:                       2.421   Cond. No.                     9.78e+19
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 2.28e-30. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.
+
+📊 Regresión lineal para criterio: avoidance foresight
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.693
+Model:                            OLS   Adj. R-squared:                  0.457
+Method:                 Least Squares   F-statistic:                     2.937
+Date:                Tue, 08 Apr 2025   Prob (F-statistic):             0.0361
+Time:                        15:14:45   Log-Likelihood:                -8.2802
+No. Observations:                  24   AIC:                             38.56
+Df Residuals:                      13   BIC:                             51.52
+Df Model:                          10                                         
+Covariance Type:            nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+const                                  0.0005      0.001      0.473      0.644      -0.002       0.003
+Time_to_Goal                           0.0077      0.016      0.469      0.647      -0.028       0.043
+Path_length                            0.0555      0.184      0.302      0.767      -0.342       0.453
+Cumulative_heading_changes            -0.0457      0.037     -1.237      0.238      -0.126       0.034
+Avg_robot_linear_speed                 5.2619      3.752      1.402      0.184      -2.844      13.367
+Social_Work                         1.897e-06    1.1e-05      0.173      0.865   -2.18e-05    2.56e-05
+Social_Work_per_second                 0.0002      0.000      0.822      0.426      -0.000       0.001
+Avg_min_distance_to_closest_person     1.7554      1.326      1.323      0.208      -1.110       4.621
+Proxemics_intimate_space_occupancy     0.0052      0.009      0.566      0.581      -0.015       0.025
+Proxemics_personal_space_occupancy     0.0213      0.011      1.880      0.083      -0.003       0.046
+Proxemics_social_space_occupancy      -0.0307      0.036     -0.844      0.414      -0.109       0.048
+Proxemics_public_space_occupancy       0.0544      0.064      0.852      0.410      -0.084       0.192
+==============================================================================
+Omnibus:                        0.302   Durbin-Watson:                   2.472
+Prob(Omnibus):                  0.860   Jarque-Bera (JB):                0.474
+Skew:                           0.063   Prob(JB):                        0.789
+Kurtosis:                       2.323   Cond. No.                     9.78e+19
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 2.28e-30. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

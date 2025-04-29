@@ -1,0 +1,37 @@
+📊 Métricas candidatas según Spearman:
+✅ Time_to_Goal - unobtrusiveness: rho = -0.463, p = 0.023
+✅ Time_to_Goal - smoothness: rho = -0.467, p = 0.021
+✅ Time_to_Goal - avoidance foresight: rho = -0.452, p = 0.027
+✅ Social_Work_per_second - unobtrusiveness: rho = 0.469, p = 0.021
+✅ Avg_min_distance_to_closest_person - smoothness: rho = 0.409, p = 0.047
+✅ Proxemics_intimate_space_occupancy - unobtrusiveness: rho = -0.775, p = 0.000
+✅ Proxemics_intimate_space_occupancy - friendliness: rho = -0.627, p = 0.001
+✅ Proxemics_intimate_space_occupancy - smoothness: rho = -0.552, p = 0.005
+✅ Proxemics_intimate_space_occupancy - avoidance foresight: rho = -0.626, p = 0.001
+✅ Proxemics_personal_space_occupancy - unobtrusiveness: rho = 0.509, p = 0.011
+✅ Proxemics_social_space_occupancy - smoothness: rho = 0.453, p = 0.026
+
+📊 Métricas candidatas según Kendall:
+✅ Time_to_Goal - unobtrusiveness: tau = -0.366, p = 0.013
+✅ Time_to_Goal - smoothness: tau = -0.310, p = 0.035
+✅ Time_to_Goal - avoidance foresight: tau = -0.320, p = 0.029
+✅ Social_Work_per_second - unobtrusiveness: tau = 0.330, p = 0.025
+✅ Proxemics_intimate_space_occupancy - unobtrusiveness: tau = -0.582, p = 0.000
+✅ Proxemics_intimate_space_occupancy - friendliness: tau = -0.451, p = 0.002
+✅ Proxemics_intimate_space_occupancy - smoothness: tau = -0.352, p = 0.017
+✅ Proxemics_intimate_space_occupancy - avoidance foresight: tau = -0.420, p = 0.004
+✅ Proxemics_personal_space_occupancy - unobtrusiveness: tau = 0.366, p = 0.013
+✅ Proxemics_public_space_occupancy - unobtrusiveness: tau = -0.324, p = 0.050
+
+
+
+🔁 Coincidencias entre Spearman y Kendall:
+✅ Time_to_Goal - unobtrusiveness: rho = -0.463, tau = -0.366
+✅ Time_to_Goal - smoothness: rho = -0.467, tau = -0.310
+✅ Time_to_Goal - avoidance foresight: rho = -0.452, tau = -0.320
+✅ Social_Work_per_second - unobtrusiveness: rho = 0.469, tau = 0.330
+✅ Proxemics_intimate_space_occupancy - unobtrusiveness: rho = -0.775, tau = -0.582
+✅ Proxemics_intimate_space_occupancy - friendliness: rho = -0.627, tau = -0.451
+✅ Proxemics_intimate_space_occupancy - smoothness: rho = -0.552, tau = -0.352
+✅ Proxemics_intimate_space_occupancy - avoidance foresight: rho = -0.626, tau = -0.420
+✅ Proxemics_personal_space_occupancy - unobtrusiveness: rho = 0.509, tau = 0.366

@@ -196,7 +196,7 @@ def organize_dict_lab_data(data):
     organized_data = separate_HM_QM_dict_lab_data(separated_data)
     return organized_data
 
-def np_single_lab_run(lab_dict : dict, experiment : str, label: str):
+def np_single_lab_run(lab_dict : dict, experiment : str, label: str, normalizeHM: bool = True):
     """
     Extract np arrays of a single lab experiment from the overall organized dictionary
     """
@@ -212,11 +212,14 @@ def np_single_lab_run(lab_dict : dict, experiment : str, label: str):
     qualitative_dict = label_data["qualitative"]
 
     quantitative_data = np.array([v for v in quantitative_dict.values()])
-    qualitative_data = np.array([v for v in qualitative_dict.values()])/5
+    if normalizeHM:
+        qualitative_data = np.array([v for v in qualitative_dict.values()])/5
+    else:
+        qualitative_data = np.array([v for v in qualitative_dict.values()])
 
     return quantitative_data, qualitative_data
 
-def np_extract_exp_lab(lab_dict : dict, experiment : str, order : bool = False, normalize : bool = True, normalization : str = "rescale"):
+def np_extract_exp_lab(lab_dict : dict, experiment : str, order : bool = False, normalizeQM : bool = True, normalizeHM : bool = True, normalization : str = "rescale"):
     """
     this function will return the data as two numpy arrays:
     one for quantitative data and the other for qualitative data, the order is given the order the quantitative and qualitative keys above are defined
@@ -246,7 +249,7 @@ def np_extract_exp_lab(lab_dict : dict, experiment : str, order : bool = False, 
     quant_arr = np.array([])
     qual_arr = np.array([])
     for label in labels:
-        quant_arr_single, qual_arr_single = np_single_lab_run(lab_dict, experiment, label)
+        quant_arr_single, qual_arr_single = np_single_lab_run(lab_dict, experiment, label, normalizeHM=normalizeHM)
         if quant_arr.size == 0:
             quant_arr = quant_arr_single.reshape(-1, 1)
         else:
@@ -257,7 +260,7 @@ def np_extract_exp_lab(lab_dict : dict, experiment : str, order : bool = False, 
             qual_arr = np.column_stack((qual_arr, qual_arr_single.reshape(-1, 1)))
     
     # Normalize quantitative data
-    if normalize:
+    if normalizeQM:
         quant_arr = normalize_quant_data(quant_arr, normalization=normalization)
     
     # There is a missing metrics in "Advanced 4" scenario
@@ -266,7 +269,7 @@ def np_extract_exp_lab(lab_dict : dict, experiment : str, order : bool = False, 
 
     return quant_arr, qual_arr
 
-def get_all_lab_data_arr(complete_lab_dict : dict, order : bool = True, normalize : bool = True, normalization : str ="rescale"):
+def get_all_lab_data_arr(complete_lab_dict : dict, order : bool = True, normalizeQM : bool = True, normalizeHM : bool = True, normalization : str ="rescale"):
     """ 
     Normalize the quantitative metrics with linear rescale in [1, min] or min-max normalization in [0,1]
     """
@@ -274,7 +277,7 @@ def get_all_lab_data_arr(complete_lab_dict : dict, order : bool = True, normaliz
     overall_qualitative_array = np.array([])
     for key in complete_lab_dict: # loop over all exp scenarios
         # Extract arrays for each exp scenario
-        quant_arr, qual_arr = np_extract_exp_lab(complete_lab_dict, key, order=True, normalize=normalize, normalization=normalization)
+        quant_arr, qual_arr = np_extract_exp_lab(complete_lab_dict, key, order=True, normalizeQM=normalizeQM, normalizeHM=normalizeHM, normalization=normalization)
 
         # stack quantitative data array for each experiment
         if overall_quantitative_array.size == 0:
