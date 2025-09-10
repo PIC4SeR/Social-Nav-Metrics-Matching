@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from os.path import expanduser
 import yaml
 
-home = expanduser("~")
+home = '/workspaces/hunavsim_devcontainer/src/'
 # Load config params for experiments
 config = yaml.safe_load(open('params.yaml'))['social_metrics_match']
 
@@ -12,10 +12,10 @@ group_keywords = {
         1: 'Overtaking',
         2: 'Crossing 1',
         3: 'Crossing 2',
-        4: 'Advanced 1',
-        5: 'Advanced 2',
-        6: 'Advanced 3',
-        7: 'Advanced 4'
+        4: 'Narrow turn',
+        5: 'Mixed',
+        6: 'Crossing 3',
+        7: 'Curious person'
     }
 
 num_groups = 8   # 24 rows divided into groups of 3
@@ -35,7 +35,7 @@ experiment_keywords = {
 }
 num_experiments = 3
 
-def plot_avg_std_all_metrics(QM_lab_data, HM_lab_data, mean_survey, std_survey):
+def plot_avg_std_all_metrics(QM_lab_data, optimal_QM_metrics,weight, mean_survey, std_survey):
     """
     Plots the histogram showing the average values and the standard deviations (shown as error bar)
     8 plots are displayed, one for each scenario
@@ -46,7 +46,9 @@ def plot_avg_std_all_metrics(QM_lab_data, HM_lab_data, mean_survey, std_survey):
         labels = ['First', 'Second', 'Third']
         # Compute mean values for each column for both datasets.
         quant_means = np.mean(QM_lab_data[group*3:(group+1)*3, :], axis=1)
-        qual_means = np.mean(HM_lab_data[group*3:(group+1)*3, :], axis=1)
+        #qual_means = np.mean(HM_lab_data[group*3:(group+1)*3, :], axis=1)
+        ##optimal_quant_means = np.mean(optimal_QM_metrics[group*3:(group+1)*3, :], axis=1)
+        optimal_quant_means = np.average(optimal_QM_metrics[group*3:(group+1)*3, :], axis=1,weights=weight)
         survey_means = np.mean(mean_survey[group*3:(group+1)*3, :], axis=1)
         survey_std_means = np.mean(std_survey[group*3:(group+1)*3, :], axis=1)
         
@@ -55,7 +57,8 @@ def plot_avg_std_all_metrics(QM_lab_data, HM_lab_data, mean_survey, std_survey):
         
         plt.figure(figsize=(8, 5))
         plt.bar(x - width, quant_means, width, label='Normalized Quant Lab Data')
-        plt.bar(x , qual_means, width, label='Normalized Qual Lab Data')
+        #plt.bar(x , qual_means, width, label='Normalized Qual Lab Data')
+        plt.bar(x, optimal_quant_means, width, label='Optimal Quant Metrics')
         plt.bar(x + width, survey_means, width, label='Mean Survey Data', yerr = survey_std_means)
         plt.xticks(x, labels)
         plt.xlabel('Columns')
@@ -66,6 +69,41 @@ def plot_avg_std_all_metrics(QM_lab_data, HM_lab_data, mean_survey, std_survey):
         plt.savefig(home + config["data"]["results_path"] + "/plots/plot_histogram_" + keyword +"_metrics.png")
         plt.show()
 
+def plot_avg_std_all_metrics_subplot(QM_lab_data, optimal_QM_data, weight, mean_survey, std_survey):
+        """
+        Creates a single figure with a 4x2 grid of bar plots comparing average values and standard deviations
+        for each of the 8 groups.
+        """
+        fig, axes = plt.subplots(2, 4, figsize=(16, 8))
+        colors = ['#77DD77','#4682B4', '#7ED4E0']
+        labels = ['Run 1', 'Run 2', 'Run 3']
+        width = 0.2
+
+        for group in range(num_groups):
+            keyword = group_keywords.get(group, f'Group{group+1}')
+            row = group // 4
+            col = group % 4
+            ax = axes[row, col]
+            quant_means = np.mean(QM_lab_data[group*3:(group+1)*3, :], axis=1)
+            #qual_means = np.mean(HM_lab_data[group*3:(group+1)*3, :], axis=1)
+            optimal_quant_means = np.average(optimal_QM_data[group*3:(group+1)*3, :], axis=1, weights=weight)
+            survey_means = np.mean(mean_survey[group*3:(group+1)*3, :], axis=1)
+            survey_std_means = np.mean(std_survey[group*3:(group+1)*3, :], axis=1)
+            
+            x = np.arange(len(labels))
+            ax.bar(x - width, quant_means, width, label='QM Lab Data', color=colors[0])
+            ax.bar(x, optimal_quant_means, width, label='Optim QM Lab Data', color=colors[1])
+            ax.bar(x + width, survey_means, width, label='HM Survey Data', color=colors[2], yerr=survey_std_means, capsize=5)
+            ax.set_xticks(x)
+            ax.set_xticklabels(labels, fontsize=15)
+            ax.set_ylabel('Mean Score', fontsize=15)
+            ax.set_title(f'{keyword}', fontsize=18)
+        import matplotlib.patches as mpatches
+        patches = [mpatches.Patch(color=colors[i], label=label) for i, label in enumerate(['QM Lab Data', 'Optimal QM Lab Data', 'HM Survey Data'])]
+        fig.legend(handles=patches, loc='lower center', ncol=3, fontsize=15, bbox_to_anchor=(0.5, -0.05))
+        plt.tight_layout()
+        plt.savefig(home + config["data"]["results_path"] + "/plots/plot_histogram_subplot_metrics.png")
+        plt.show()
 def plot_avg_std_survey_metrics(avg_data,std_data):
     """
     Plots the histogram showing the average values and the standard deviations (shown as error bar)
