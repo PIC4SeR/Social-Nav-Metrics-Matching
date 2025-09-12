@@ -43,7 +43,7 @@ def plot_avg_std_all_metrics(QM_lab_data, optimal_QM_metrics,weight, mean_survey
     for group in range(num_groups):
         keyword = group_keywords.get(group, f'Group{group+1}')
         # Assume each of the two arrays has three columns and we want to compare the column means.
-        labels = ['First', 'Second', 'Third']
+        labels = ['QM', 'Optimal QM', 'HM']
         # Compute mean values for each column for both datasets.
         quant_means = np.mean(QM_lab_data[group*3:(group+1)*3, :], axis=1)
         #qual_means = np.mean(HM_lab_data[group*3:(group+1)*3, :], axis=1)
@@ -54,17 +54,21 @@ def plot_avg_std_all_metrics(QM_lab_data, optimal_QM_metrics,weight, mean_survey
         
         x = np.arange(len(labels))
         width = 0.2  # Width of each bar
+        colors = ['#77DD77','#4682B4', '#7ED4E0']
         
         plt.figure(figsize=(8, 5))
-        plt.bar(x - width, quant_means, width, label='Normalized Quant Lab Data')
+        plt.bar(x - width, quant_means, width, label='QM', color=colors[0])
         #plt.bar(x , qual_means, width, label='Normalized Qual Lab Data')
-        plt.bar(x, optimal_quant_means, width, label='Optimal Quant Metrics')
-        plt.bar(x + width, survey_means, width, label='Mean Survey Data', yerr = survey_std_means)
+        plt.bar(x, optimal_quant_means, width, label='Optimal QM', color=colors[1])
+        plt.bar(x + width, survey_means, width, label='HM', yerr = survey_std_means, color=colors[2])
         plt.xticks(x, labels)
+        for i, tick in enumerate(plt.gca().get_xticklabels()):
+            tick.set_color(colors[i])
+            tick.set_fontsize(15)
         plt.xlabel('Columns')
         plt.ylabel('Mean Value')
-        plt.title(f'Comparison for {keyword}')
-        plt.legend()
+        #plt.title(f'Comparison for {keyword}')
+        plt.legend(loc='upper left')
         plt.tight_layout()
         plt.savefig(home + config["data"]["results_path"] + "/plots/plot_histogram_" + keyword +"_metrics.png")
         plt.show()
