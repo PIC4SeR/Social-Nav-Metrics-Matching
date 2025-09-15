@@ -39,9 +39,9 @@ This repository contains the collected metrics for the 24 analyzed experiments, 
 
 8 scenarios were tested, with 3 different controller configurations each to have a different behavior, leading to diverse runs as can be seen on the gifs below
 <p align="left">
-  <img src="./images/first_passing.gif" alt="First Passing" width="150" style="display: inline-block; margin-right: 20px;"/>
-  <img src="./images/second_passing.gif" alt="Second Passing" width="150" style="display: inline-block; margin-right: 20px"/>
-  <img src="./images/third_passing.gif" alt="Third Passing" width="150"
+  <img src="./images/first_passing.gif" alt="First Passing" width="300" style="display: inline-block; margin-right: 20px;"/>
+  <img src="./images/second_passing.gif" alt="Second Passing" width="300" style="display: inline-block; margin-right: 20px"/>
+  <img src="./images/third_passing.gif" alt="Third Passing" width="300"
   style="display: inline-block;"/>
 </p>
 
