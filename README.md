@@ -88,7 +88,7 @@ pip install odfpy
 ```
 pip install -r requirements.txt
 ```-->
-The metrics are already extracted and presented in the data_folder, the recorded ros2 bags associated with them can be downloaded at this [link](https://drive.google.com/file/d/1DMiw7qAvpCDC3eAf4Af-XRlvGY9o6DQf/view?usp=drive_link)
+The metrics are already extracted and presented in the data_folder.
 
 
 
@@ -108,7 +108,10 @@ This notebook shows the results presented in the  "Clustering comparison" sectio
 
 This notebook shows the results presented in the "Statistical analysis for metrics correlation" section. The Spearman and Kendall coefficients are computed and the data is presented in a heatmap to show the most relevant metrics.
 
+## Dataset
 
+The data associated to the metrics are organized using the experiment name, and three bags are present for each experiment, labeled "first", "second", "third". Each of the 24 experiments was recorded as ROS2 bags, using the _0.db3 format.
+The dataset will be disclosed upon paper acceptance.
 
 
 <!--# Citations
