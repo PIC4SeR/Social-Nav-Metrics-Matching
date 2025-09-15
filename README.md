@@ -21,12 +21,13 @@ The goal of the project is to analyze the correlation between existing social na
 
 8 scenarios were tested, with 3 different controllers configurations each to have a different behavior, leading to diverese runs as can be seen on the gifs below
 <p align="left">
-  <img src="./images/first_passing.gif" alt="First Passing" width="300" style="display: inline-block; margin-right: 20px;"/>
-  <img src="./images/second_passing.gif" alt="Second Passing" width="300" style="display: inline-block; margin-right: 20px"/>
-  <img src="./images/third_passing.gif" alt="Third Passing" width="300"
+  <img src="./images/first_passing.gif" alt="First Passing" width="150" style="display: inline-block; margin-right: 20px;"/>
+  <img src="./images/second_passing.gif" alt="Second Passing" width="150" style="display: inline-block; margin-right: 20px"/>
+  <img src="./images/third_passing.gif" alt="Third Passing" width="150"
   style="display: inline-block;"/>
 </p>
 
+The human metrics were collected via survey, survey that can be viewed at this [link](https://docs.google.com/forms/d/e/1FAIpQLSf_Dl9Fxwj-b9akZzA06BRVu8GOQalZP8z9UsHuONQnMncChA/viewform?usp=dialog)
 
 ##
 
@@ -69,7 +70,7 @@ pip install odfpy
 ```
 pip install -r requirements.txt
 ```-->
-The metrics are already extracted and presented in the data_folder, the recorded ros2 bags associated to them can be downloaded at (insert link)
+The metrics are already extracted and presented in the data_folder, the recorded ros2 bags associated to them can be downloaded at this [link](https://drive.google.com/file/d/1DMiw7qAvpCDC3eAf4Af-XRlvGY9o6DQf/view?usp=drive_link)
 
 
 
@@ -108,4 +109,5 @@ If you want to use this code for your research, please cite our work ([Paper Nam
 # Acknowledgements
 [Acknowledgements here]
 -->
+
 
