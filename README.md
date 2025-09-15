@@ -10,7 +10,7 @@
   <img src="https://amlbrown.com/wp-content/uploads/2015/10/11219225_10153619513398446_2657606012680909527_n.jpg" alt="Alternative text" width="450"/>
 </p> -->
 <p align="center">
-  <img src="./images/Corr-Metrics.drawio.png" alt="Correlation Metrics Analysis" width="450"/>
+  <img src="https://anonymous.4open.science/r/Social-Nav-Metrics-Matching-ED7D/images/Corr-Metrics.drawio.png" alt="Correlation Metrics Analysis" width="450"/>
 </p>
 
 ## Objective of the project
@@ -39,9 +39,9 @@ This repository contains the collected metrics for the 24 analyzed experiments, 
 
 8 scenarios were tested, with 3 different controller configurations each to have a different behavior, leading to diverse runs as can be seen on the gifs below
 <p align="left">
-  <img src="./images/first_passing.gif" alt="First Passing" width="300" style="display: inline-block; margin-right: 20px;"/>
-  <img src="./images/second_passing.gif" alt="Second Passing" width="300" style="display: inline-block; margin-right: 20px"/>
-  <img src="./images/third_passing.gif" alt="Third Passing" width="300"
+  <img src="https://anonymous.4open.science/r/Social-Nav-Metrics-Matching-ED7D/images/first_passing.gif" alt="First Passing" width="300" style="display: inline-block; margin-right: 20px;"/>
+  <img src="https://anonymous.4open.science/r/Social-Nav-Metrics-Matching-ED7D/images/second_passing.gif" alt="Second Passing" width="300" style="display: inline-block; margin-right: 20px"/>
+  <img src="https://anonymous.4open.science/r/Social-Nav-Metrics-Matching-ED7D/images/third_passing.gif" alt="Third Passing" width="300"
   style="display: inline-block;"/>
 </p>
 
