@@ -27,7 +27,7 @@ The goal of the project is to analyze the correlation between existing social na
   style="display: inline-block;"/>
 </p>
 
-The human metrics were collected via survey, survey that can be viewed at this [link](https://docs.google.com/forms/d/e/1FAIpQLSf_Dl9Fxwj-b9akZzA06BRVu8GOQalZP8z9UsHuONQnMncChA/viewform?usp=dialog)
+The human metrics were collected via survey, survey that can be viewed at this [link](https://docs.google.com/forms/d/e/1FAIpQLSf_Dl9Fxwj-b9akZzA06BRVu8GOQalZP8z9UsHuONQnMncChA/viewform?usp=dialog). This is an exact copy of the original survey, the original isn't shown to avoid tampering with the answers given.
 
 ##
 
