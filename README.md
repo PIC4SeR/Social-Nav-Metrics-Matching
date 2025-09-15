@@ -15,11 +15,29 @@
 
 ## Objective of the project
 
-This repository is shared for the ICRA 2026 paper, "Metrics vs. Surveys: Can Quantitative Measures Replace Human Surveys in Social Robot Navigation? A Correlation Analysis" and it contains the collected metrics for the 24 analyzed experiments, along with the necessary files used to analyze them.
 
-The goal of the project is to analyze the correlation between existing social navigation metrics commonly used in robot evaluation and metrics assigned by humans through surveys. The project aims at highlighting key insights that emerge from such comparison: are current metrics exhaustive to represent the navigation experiment compared to human-level opinion? What aspect is missing?
+Social (also called human-aware) navigation is a
+key challenge for the integration of mobile robots into human
+environments. The evaluation of such systems is complex, as
+factors such as comfort, safety, and legibility must be consid-
+ered. Human-centered assessments, typically conducted through
+surveys, provide reliable insights but are costly, resource-
+intensive, and difficult to reproduce or compare across systems.
+Alternatively, numerical social navigation metrics are easy to
+compute and facilitate comparisons, yet the community lacks
+consensus on a standard set of metrics.
+This work explores the relationship between numerical
+metrics and human-centered evaluations to identify potential
+correlations. If specific quantitative measures align with human
+perceptions, they could serve as standardized evaluation tools,
+reducing the dependency on surveys. Our results indicate that
+while current metrics capture some aspects of robot navigation
+behavior, important subjective factors remain insufficiently
+represented and new metrics are necessary.
 
-8 scenarios were tested, with 3 different controllers configurations each to have a different behavior, leading to diverese runs as can be seen on the gifs below
+This repository contains the collected metrics for the 24 analyzed experiments, along with the necessary files used to analyze them.
+
+8 scenarios were tested, with 3 different controller configurations each to have a different behavior, leading to diverse runs as can be seen on the gifs below
 <p align="left">
   <img src="./images/first_passing.gif" alt="First Passing" width="150" style="display: inline-block; margin-right: 20px;"/>
   <img src="./images/second_passing.gif" alt="Second Passing" width="150" style="display: inline-block; margin-right: 20px"/>
@@ -27,7 +45,7 @@ The goal of the project is to analyze the correlation between existing social na
   style="display: inline-block;"/>
 </p>
 
-The human metrics were collected via survey, survey that can be viewed at this [link](https://docs.google.com/forms/d/e/1FAIpQLSf_Dl9Fxwj-b9akZzA06BRVu8GOQalZP8z9UsHuONQnMncChA/viewform?usp=dialog). This is an exact copy of the original survey, the original isn't shown to avoid tampering with the answers given.
+The human metrics were collected via survey, survey that can be viewed at this [link](https://docs.google.com/forms/d/e/1FAIpQLSf_Dl9Fxwj-b9akZzA06BRVu8GOQalZP8z9UsHuONQnMncChA/viewform?usp=dialog). This is an exact copy of the original survey; the original isn't shown to avoid tampering with the answers given.
 
 ##
 
@@ -62,7 +80,7 @@ The human metrics were collected via survey, survey that can be viewed at this [
 
 ## Installation
 
-Odfpy is required to extract data from the ods and excel files
+Odfpy is required to extract data from the ods and Excel files
 ```
 pip install odfpy
 ```
@@ -70,12 +88,12 @@ pip install odfpy
 ```
 pip install -r requirements.txt
 ```-->
-The metrics are already extracted and presented in the data_folder, the recorded ros2 bags associated to them can be downloaded at this [link](https://drive.google.com/file/d/1DMiw7qAvpCDC3eAf4Af-XRlvGY9o6DQf/view?usp=drive_link)
+The metrics are already extracted and presented in the data_folder, the recorded ros2 bags associated with them can be downloaded at this [link](https://drive.google.com/file/d/1DMiw7qAvpCDC3eAf4Af-XRlvGY9o6DQf/view?usp=drive_link)
 
 
 
 ## Usage
-The analysis is carried out in the three included jupyter notebook files.
+The analysis is carried out in the three included Jupyter notebook files.
 The home path in the three notebooks as to be changed to the relative path of the repository.
 
 **G1_1_overall_metrics_match.ipynb**
@@ -84,11 +102,11 @@ This notebook shows the results presented in the "Overall evaluation comparison"
 
 **G1_2_cluster_social_metrics.ipynb**
 
-This notebook shows the results presented in the  "Clustering comparison" section. The ARI is computed to observe the best combinations for clustering, and the cumulative ARI is then computed to observe the most impactful metrics, which are plotted in a histogram.
+This notebook shows the results presented in the  "Clustering comparison" section. The ARI is computed to identify the best combinations for clustering, and the cumulative ARI is then calculated to determine the most impactful metrics, which are plotted in a histogram.
 
 **G2_statistical_analysis.ipynb**
 
-This notebook shows the results presented in the "Statistical analysis for metrics correlation" section. The Spearman and Kendall coefficients are computed and data is preented in a heatmap to show the most relevant metrics.
+This notebook shows the results presented in the "Statistical analysis for metrics correlation" section. The Spearman and Kendall coefficients are computed and the data is presented in a heatmap to show the most relevant metrics.
 
 
 
