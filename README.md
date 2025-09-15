@@ -2,68 +2,98 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 
 
-<h1 align="center"> Metrics vs. Surveys: Can Quantitative Measures Replace Human Surveys in Social Robot Navigation? A Correlation Analysis
+<h1 align="center">  Metrics vs Surveys: Can Quantitative Measures Replace Human Surveys in Social Robot Navigation? A Correlation Analysis
 </h1>
 
 <!-- [Graphical abstract goes here]
 <p align="center">
   <img src="https://amlbrown.com/wp-content/uploads/2015/10/11219225_10153619513398446_2657606012680909527_n.jpg" alt="Alternative text" width="450"/>
 </p> -->
+<p align="center">
+  <img src="./images/Corr-Metrics.drawio.png" alt="Correlation Metrics Analysis" width="450"/>
+</p>
 
 ## Objective of the project
 
-The goal of the project is to analyze the correlation between existing social navigation metrics commonly used in robot evaluation and metrics assigned by humans through surveys. The project aims at highlighting key insights that emerge from such comparison: are current metrics exaustive to represent the navigation experiment compared to human-level opinion? What aspect is missing? 
+This repository is shared for the ICRA 2026 paper, "Metrics vs. Surveys: Can Quantitative Measures Replace Human Surveys in Social Robot Navigation? A Correlation Analysis" and it contains the collected metrics for the 24 analyzed experiments, along with the necessary files used to analyze them.
 
-**Definiton**
+The goal of the project is to analyze the correlation between existing social navigation metrics commonly used in robot evaluation and metrics assigned by humans through surveys. The project aims at highlighting key insights that emerge from such comparison: are current metrics exhaustive to represent the navigation experiment compared to human-level opinion? What aspect is missing?
 
-QM := Quantitative Metrics
+8 scenarios were tested, with 3 different controllers configurations each to have a different behavior, leading to diverese runs as can be seen on the gifs below
+<p align="left">
+  <img src="./images/first_passing.gif" alt="First Passing" width="150" style="display: inline-block; margin-right: 20px;"/>
+  <img src="./images/second_passing.gif" alt="Second Passing" width="150" style="display: inline-block; margin-right: 20px"/>
+  <img src="./images/third_passing.gif" alt="Third Passing" width="150"
+  style="display: inline-block;"/>
+</p>
 
-HM := Human Metrics
+The human metrics were collected via survey, survey that can be viewed at this [link](https://docs.google.com/forms/d/e/1FAIpQLSf_Dl9Fxwj-b9akZzA06BRVu8GOQalZP8z9UsHuONQnMncChA/viewform?usp=dialog). This is an exact copy of the original survey, the original isn't shown to avoid tampering with the answers given.
 
-## Roadmap
+##
 
-- **Goal 0**:
-   - Setting up data structure to import evaluation metrics data in np arrays (done)
-   - Labels assigned to each experiment according to the assumptions (done)
-   - Plotting utils to start showing bar plots, also with standard deviation (in progress)
 
-- **Goal 1** (Work in Progress): Investigate overall correlation between quantitative and qualitative metrics. 
-  - 1.1: Discretize quantitative metrics in 1-5 score range and plot the histogram for each experiment to compare with qualitative results
-  - 1.2: Cluster the experiments in the 3 expected clusters (based on assigned labels) and compare the results obtained using QM space and HM space
+**QM := Quantitative Metrics, 11 in total**
 
-- **Goal 2** (not started): Single metrics feature matching. Which aspect of human evaluation is missing in the existing quantitative metrics? 
-  - **Output**: table of regression score matching
-  - 2.1. ANOVA (variance analysis). Helps to verify whether the differences in the metric produce significant differences in the rating.
-	- 2.2. Analysis of correlation between each metric and rating (average values) (Spearman and/or Kendall).
-	- 2.3. Optionally, to model the relation between metric and rating, ordinal regression
+**QM Metrics**
+- [0] Time to Goal
+- [1] Path length
+- [2] Cumulative heading changes
+- [3] Avg robot linear speed
 
-- **Goal 3**(not started): Which are better to classify correctly the experiment? 
-Train a classifier to predict the goodness of the experiment based on assigned labels using both QM and HM features. 
-Decision trees and many others, and applying explanability methods to know the "relevance" of each metric
+- [4] Social Work 
+- [5] Social Work (per second)
+- [6] Average minimum distance to closest person
+- [7] Proxemics: intimate space occupancy
+- [8] Proxemics: personal space occupancy
+- [9] Proxemics: social space occupancy
+- [10] Proxemics: public space occupancy
 
-## Current state of works
-- Goal 0 (done): Setting up data structure to import evaluation metrics data in np arrays
-- Goal 1 (quite done): Investigate overall correlation between quantitative and qualitative metrics. We set up plots for direct comparison of average results from survey and quantitative lab data. Then, we use K-means clustering to compare the category assigned to each epxeriment based on QM features os Survey HM features.
+**HM := Human Metrics, 4 in total**
 
-## Installation [TODO]
-[Explanation on how to install the project goes here]
+**HM Metrics**
+- [0] Unobtrusiveness
+- [1] Friendliness
+- [2] Smoothness
+- [3] Avoidance Foresight
 
-Always use ```pipreqs``` to generate the requirements.txt file.
+**ARI := Adjusted Rand Index**
+
+
+
+## Installation
+
+Odfpy is required to extract data from the ods and excel files
+```
+pip install odfpy
+```
+<!--Always use ```pipreqs``` to generate the requirements.txt file.
 ```
 pip install -r requirements.txt
-```
-Don't forget to provide links to datasets, model weights, etc.
+```-->
+The metrics are already extracted and presented in the data_folder, the recorded ros2 bags associated to them can be downloaded at this [link](https://drive.google.com/file/d/1DMiw7qAvpCDC3eAf4Af-XRlvGY9o6DQf/view?usp=drive_link)
+
+
 
 ## Usage
-[Explanation of basic usage goes here]
+The analysis is carried out in the three included jupyter notebook files.
+The home path in the three notebooks as to be changed to the relative path of the repository.
 
-Provide sample scripts if needed.
+**G1_1_overall_metrics_match.ipynb**
 
-```
-python main.py --mode train --gpu 0
-```
+This notebook shows the results presented in the "Overall evaluation comparison" section, thanks to the reduced set of QM metrics (0,3,6,7,9). The functions for plotting the histograms are presented.
 
-# Citations
+**G1_2_cluster_social_metrics.ipynb**
+
+This notebook shows the results presented in the  "Clustering comparison" section. The ARI is computed to observe the best combinations for clustering, and the cumulative ARI is then computed to observe the most impactful metrics, which are plotted in a histogram.
+
+**G2_statistical_analysis.ipynb**
+
+This notebook shows the results presented in the "Statistical analysis for metrics correlation" section. The Spearman and Kendall coefficients are computed and data is preented in a heatmap to show the most relevant metrics.
+
+
+
+
+<!--# Citations
 Remind users to cite your work, e.g.:
 
 This repository is intended for scientific research purposes.
@@ -73,12 +103,9 @@ If you want to use this code for your research, please cite our work ([Paper Nam
 [.bib citation here]
 ```
 
-# References
+<!--# References
 [Other references that should be cited when using this repository here]
 
 # Acknowledgements
 [Acknowledgements here]
-
-<p align="left">
-  <img src="https://media.giphy.com/media/yWh7b6fWA5rJm/giphy.gif?cid=790b7611ieiiqtp06t9x5bju00gzcgryrw8me999ep27ovcj&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="animated" />
-</p>
+-->
